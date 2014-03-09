@@ -1,0 +1,9 @@
+<% if @todos.done().length: %>
+  <a id="clear-completed">
+    Clear <%= @todos.done().length %> completed <%= if @todos.done().length == 1 then 'item' else 'items' %>
+  </a>
+<% end %>
+
+<div class="todo-count">
+  <b><%= @todos.remaining().length %></b> <%= if @todos.remaining().length == 1 then 'item' else 'items' %> left
+</div>
