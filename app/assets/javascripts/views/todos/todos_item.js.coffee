@@ -7,9 +7,9 @@ class BackboneDemo.Views.TodosItem extends Backbone.View
   events:
     'click .toggle': 'toggleDone'
     'dblclick .view': 'edit'
-    'blur .edit': 'close'
     'click a.destroy': 'clear'
     'keypress .edit': 'updateOnEnter'
+    'blur .edit': 'close'
 
   initialize: ->
     @listenTo(@model, 'change', @render)
@@ -25,10 +25,10 @@ class BackboneDemo.Views.TodosItem extends Backbone.View
   edit: ->
     @$el.addClass('editing')
     @$('edit').focus()
+    console.log @$el
 
   close: ->
-    value = @$('edit').val()
-
+    value = @$('input.edit').val()
     unless value
       @clear()
     else
@@ -36,6 +36,7 @@ class BackboneDemo.Views.TodosItem extends Backbone.View
       @$el.removeClass('editing')
 
   updateOnEnter: (e)->
+
     if e.keyCode is 13
       @close()
 
